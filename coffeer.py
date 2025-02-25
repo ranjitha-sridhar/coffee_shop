@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from openpyxl.workbook import Workbook
 
+sns.set_palette('pastel')
+
 seed_data = {
     'Supplier': np.random.choice(['Blue Tokai', 'Tata Coffee', 'Nescafe', 'Lavazza'], 100),
     'Year': np.random.choice([2020, 2021, 2022, 2023, 2024], 100),
@@ -34,7 +36,7 @@ price_df = pd.DataFrame(price_data)
 def new_product_launches(df):
     launch_data = df.groupby('ProductLaunch')['Sales'].sum()
     plt.figure(figsize=(10, 6))
-    launch_data.plot(kind='bar', edgecolor='black')
+    launch_data.plot(kind='bar', color=sns.color_palette('pastel'))
     plt.title('New Product Launches')
     plt.xlabel('Product Launch')
     plt.ylabel('Sales')
@@ -45,7 +47,7 @@ new_product_launches(launch_df)
 def menu_optimization(df):
     menu_data = df.groupby('MenuItem')['Sales'].sum()
     plt.figure(figsize=(10, 6))
-    menu_data.plot(kind='bar', edgecolor='black')
+    menu_data.plot(kind='bar', color=sns.color_palette('pastel'))
     plt.title('Menu Optimization')
     plt.xlabel('Menu Item')
     plt.ylabel('Sales')
@@ -56,7 +58,7 @@ menu_optimization(menu_df)
 def price_sensitivity(df):
     price_effect = df.groupby('Price')['Sales'].sum()
     plt.figure(figsize=(10, 6))
-    price_effect.plot(kind='line', marker='o')
+    price_effect.plot(kind='line', marker='o', color=sns.color_palette('pastel')[0])
     plt.title('Price Sensitivity')
     plt.xlabel('Price')
     plt.ylabel('Sales')
@@ -66,7 +68,7 @@ price_sensitivity(price_df)
 
 def competitor_analysis(df):
     competitor_data = df.groupby('Competitor')[['Sales', 'Rating']].mean()
-    competitor_data.plot(kind='bar', title='Competitor Sales and Ratings')
+    competitor_data.plot(kind='bar', color=sns.color_palette('pastel'), title='Competitor Sales and Ratings')
     plt.ylabel('Average Value')
     plt.xlabel('Competitor')
     plt.tight_layout()
