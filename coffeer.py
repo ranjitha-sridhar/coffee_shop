@@ -2,7 +2,6 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from openpyxl.workbook import Workbook
 
 sns.set_palette('pastel')
 
@@ -13,7 +12,7 @@ seed_data = {
     'Sales Generated ($)': np.random.randint(4000, 15000, 100)
 }
 seeds_df = pd.DataFrame(seed_data)
-seeds_df.to_excel('Coffee_Seeds.xlsx', index=False)
+seeds_df.to_csv('Coffee_Seeds.csv', index=False)
 
 launch_data = {
     'ProductLaunch': np.random.choice(['New Latte', 'Espresso Shot', 'Cold Brew', 'Flat White', 'Macchiato'], 100),
