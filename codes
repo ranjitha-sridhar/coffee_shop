@@ -175,45 +175,45 @@ def price_sensitivity(df):
     plt.ylabel('Sales')
     plt.show()
 
-# Example usage:
-# data = {
-#     'Datetime': ['2023-01-01 10:00:00', '2023-01-01 11:00:00'],
-#     'Sales': [100, 200],
-#     'Promotion': ['Promo1', 'Promo2'],
-#     'CustomerID': [1, 1],
-#     'Product': ['Latte', 'Espresso'],
-#     'CoffeeBlend': ['Blend1', 'Blend2'],
-#     'Feedback': [4, 5],
-#     'CoffeeType': ['Latte', 'Espresso'],
-#     'PreparationTime': [5, 3],
-#     'Supplier': ['Supplier1', 'Supplier2'],
-#     'Cost': [50, 60],
-#     'Quality': [4, 5],
-#     'DeliveryTime': [2, 3],
-#     'ServiceAspect': ['Cleanliness', 'Staff Friendliness'],
-#     'WasteType': ['Coffee Grounds', 'Packaging'],
-#     'Amount': [10, 15],
-#     'ProductLaunch': ['NewProduct1', 'NewProduct2'],
-#     'Competitor': ['Competitor1', 'Competitor2'],
-#     'Rating': [4, 5],
-#     'MenuItem': ['Latte', 'Espresso'],
-#     'Platform': ['Instagram', 'Facebook'],
-#     'Price': [5, 6]
-# }
-# df = pd.DataFrame(data)
-# customer_demographics_analysis(df)
-# peak_sales_hours(df)
-# promotion_effectiveness(df)
-# seasonal_trends(df)
-# customer_loyalty(df)
-# product_popularity(df)
-# customer_preferences(df)
-# operational_efficiency(df)
-# supply_chain_analysis(df)
-# customer_satisfaction(df)
-# waste_reduction(df)
-# new_product_launches(df)
-# competitor_analysis(df)
-# menu_optimization(df)
-# digital_presence(df)
-# price_sensitivity(df)
+
+data={
+     'Datetime': ['2023-01-01 10:00:00', '2023-01-01 11:00:00'],
+     'Sales': [100, 200],
+     'Promotion': ['Promo1', 'Promo2'],
+     'CustomerID': [1, 1],
+     'Product': ['Latte', 'Espresso'],
+     'CoffeeBlend': ['Blend1', 'Blend2'],
+     'Feedback': [4, 5],
+     'CoffeeType': ['Latte', 'Espresso'],
+     'PreparationTime': [5, 3],
+     'Supplier': ['Supplier1', 'Supplier2'],
+     'Cost': [50, 60],
+     'Quality': [4, 5],
+     'DeliveryTime': [2, 3],
+     'ServiceAspect': ['Cleanliness', 'Staff Friendliness'],
+     'WasteType': ['Coffee Grounds', 'Packaging'],
+     'Amount': [10, 15],
+     'ProductLaunch': ['NewProduct1', 'NewProduct2'],
+     'Competitor': ['Competitor1', 'Competitor2'],
+    'Rating': [4, 5],
+     'MenuItem': ['Latte', 'Espresso'],
+     'Platform': ['Instagram', 'Facebook'],
+     'Price': [5, 6]
+ }
+df = pd.DataFrame(data)
+customer_demographics_analysis(df)
+peak_sales_hours(df)
+promotion_effectiveness(df)
+seasonal_trends(df)
+customer_loyalty(df)
+product_popularity(df)
+customer_preferences(df)
+operational_efficiency(df)
+supply_chain_analysis(df)
+customer_satisfaction(df)
+waste_reduction(df)
+new_product_launches(df)
+competitor_analysis(df)
+menu_optimization(df)
+digital_presence(df)
+price_sensitivity(df)
