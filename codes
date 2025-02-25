@@ -1,0 +1,219 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# 1. Customer Demographics Analysis
+def customer_demographics_analysis(df):
+    plt.figure(figsize=(10, 6))
+    df['Age'].hist(bins=20, edgecolor='black')
+    plt.title('Age Distribution')
+    plt.xlabel('Age')
+    plt.ylabel('Frequency')
+    plt.show()
+
+    plt.figure(figsize=(10, 6))
+    df['Gender'].value_counts().plot(kind='bar', edgecolor='black')
+    plt.title('Gender Distribution')
+    plt.xlabel('Gender')
+    plt.ylabel('Frequency')
+    plt.show()
+
+    plt.figure(figsize=(10, 6))
+    df['Location'].value_counts().plot(kind='bar', edgecolor='black')
+    plt.title('Location Distribution')
+    plt.xlabel('Location')
+    plt.ylabel('Frequency')
+    plt.show()
+
+# 2. Peak Sales Hours
+def peak_sales_hours(df):
+    df['Datetime'] = pd.to_datetime(df['Datetime'])
+    df['Hour'] = df['Datetime'].dt.hour
+    df['DayOfWeek'] = df['Datetime'].dt.day_name()
+
+    hourly_sales = df.groupby('Hour')['Sales'].sum()
+    plt.figure(figsize=(10, 6))
+    hourly_sales.plot(kind='bar', edgecolor='black')
+    plt.title('Sales by Hour')
+    plt.xlabel('Hour')
+    plt.ylabel('Sales')
+    plt.show()
+
+    weekly_sales = df.groupby('DayOfWeek')['Sales'].sum()
+    plt.figure(figsize=(10, 6))
+    weekly_sales.plot(kind='bar', edgecolor='black')
+    plt.title('Sales by Day of the Week')
+    plt.xlabel('Day of the Week')
+    plt.ylabel('Sales')
+    plt.show()
+
+# 3. Promotion Effectiveness
+def promotion_effectiveness(df):
+    promotion_sales = df.groupby('Promotion')['Sales'].sum()
+    plt.figure(figsize=(10, 6))
+    promotion_sales.plot(kind='bar', edgecolor='black')
+    plt.title('Promotion Effectiveness')
+    plt.xlabel('Promotion')
+    plt.ylabel('Sales')
+    plt.show()
+
+# 4. Seasonal Trends
+def seasonal_trends(df):
+    df['Datetime'] = pd.to_datetime(df['Datetime'])
+    df['Month'] = df['Datetime'].dt.month
+
+    monthly_sales = df.groupby('Month')['Sales'].sum()
+    plt.figure(figsize=(10, 6))
+    monthly_sales.plot(kind='bar', edgecolor='black')
+    plt.title('Seasonal Sales Trends')
+    plt.xlabel('Month')
+    plt.ylabel('Sales')
+    plt.show()
+
+# 5. Customer Loyalty
+def customer_loyalty(df):
+    repeat_customers = df[df.duplicated('CustomerID', keep=False)]
+    loyalty_rate = repeat_customers['CustomerID'].nunique() / df['CustomerID'].nunique()
+    print(f"Customer Loyalty Rate: {loyalty_rate:.2%}")
+
+# 6. Product Popularity
+def product_popularity(df):
+    product_sales = df.groupby('Product')['Sales'].sum()
+    plt.figure(figsize=(10, 6))
+    product_sales.plot(kind='bar', edgecolor='black')
+    plt.title('Product Popularity')
+    plt.xlabel('Product')
+    plt.ylabel('Sales')
+    plt.show()
+
+# 7. Customer Preferences
+def customer_preferences(df):
+    feedback = df.groupby('CoffeeBlend')['Feedback'].mean()
+    plt.figure(figsize=(10, 6))
+    feedback.plot(kind='bar', edgecolor='black')
+    plt.title('Customer Preferences')
+    plt.xlabel('Coffee Blend')
+    plt.ylabel('Average Feedback Rating')
+    plt.show()
+
+# 8. Operational Efficiency
+def operational_efficiency(df):
+    prep_times = df.groupby('CoffeeType')['PreparationTime'].mean()
+    plt.figure(figsize=(10, 6))
+    prep_times.plot(kind='bar', edgecolor='black')
+    plt.title('Operational Efficiency')
+    plt.xlabel('Coffee Type')
+    plt.ylabel('Average Preparation Time (minutes)')
+    plt.show()
+
+# 9. Supply Chain Analysis
+def supply_chain_analysis(df):
+    supplier_data = df.groupby('Supplier')[['Cost', 'Quality', 'DeliveryTime']].mean()
+    print(supplier_data)
+
+# 10. Customer Satisfaction
+def customer_satisfaction(df):
+    satisfaction_scores = df.groupby('ServiceAspect')['Feedback'].mean()
+    plt.figure(figsize=(10, 6))
+    satisfaction_scores.plot(kind='bar', edgecolor='black')
+    plt.title('Customer Satisfaction')
+    plt.xlabel('Service Aspect')
+    plt.ylabel('Average Feedback Rating')
+    plt.show()
+
+# 11. Waste Reduction
+def waste_reduction(df):
+    waste_data = df.groupby('WasteType')['Amount'].sum()
+    plt.figure(figsize=(10, 6))
+    waste_data.plot(kind='bar', edgecolor='black')
+    plt.title('Waste Reduction')
+    plt.xlabel('Waste Type')
+    plt.ylabel('Amount of Waste')
+    plt.show()
+
+# 12. New Product Launches
+def new_product_launches(df):
+    launch_data = df.groupby('ProductLaunch')['Sales'].sum()
+    plt.figure(figsize=(10, 6))
+    launch_data.plot(kind='bar', edgecolor='black')
+    plt.title('New Product Launches')
+    plt.xlabel('Product Launch')
+    plt.ylabel('Sales')
+    plt.show()
+
+# 13. Competitor Analysis
+def competitor_analysis(df):
+    competitor_data = df.groupby('Competitor')[['Sales', 'Rating']].mean()
+    print(competitor_data)
+
+# 14. Menu Optimization
+def menu_optimization(df):
+    menu_data = df.groupby('MenuItem')['Sales'].sum()
+    plt.figure(figsize=(10, 6))
+    menu_data.plot(kind='bar', edgecolor='black')
+    plt.title('Menu Optimization')
+    plt.xlabel('Menu Item')
+    plt.ylabel('Sales')
+    plt.show()
+
+# 15. Digital Presence
+def digital_presence(df):
+    online_reviews = df.groupby('Platform')['Sales'].sum()
+    plt.figure(figsize=(10, 6))
+    online_reviews.plot(kind='bar', edgecolor='black')
+    plt.title('Digital Presence')
+    plt.xlabel('Platform')
+    plt.ylabel('Sales')
+    plt.show()
+
+# 16. Price Sensitivity
+def price_sensitivity(df):
+    price_effect = df.groupby('Price')['Sales'].sum()
+    plt.figure(figsize=(10, 6))
+    price_effect.plot(kind='line', marker='o', edgecolor='black')
+    plt.title('Price Sensitivity')
+    plt.xlabel('Price')
+    plt.ylabel('Sales')
+    plt.show()
+
+# Example usage:
+# data = {
+#     'Datetime': ['2023-01-01 10:00:00', '2023-01-01 11:00:00'],
+#     'Sales': [100, 200],
+#     'Promotion': ['Promo1', 'Promo2'],
+#     'CustomerID': [1, 1],
+#     'Product': ['Latte', 'Espresso'],
+#     'CoffeeBlend': ['Blend1', 'Blend2'],
+#     'Feedback': [4, 5],
+#     'CoffeeType': ['Latte', 'Espresso'],
+#     'PreparationTime': [5, 3],
+#     'Supplier': ['Supplier1', 'Supplier2'],
+#     'Cost': [50, 60],
+#     'Quality': [4, 5],
+#     'DeliveryTime': [2, 3],
+#     'ServiceAspect': ['Cleanliness', 'Staff Friendliness'],
+#     'WasteType': ['Coffee Grounds', 'Packaging'],
+#     'Amount': [10, 15],
+#     'ProductLaunch': ['NewProduct1', 'NewProduct2'],
+#     'Competitor': ['Competitor1', 'Competitor2'],
+#     'Rating': [4, 5],
+#     'MenuItem': ['Latte', 'Espresso'],
+#     'Platform': ['Instagram', 'Facebook'],
+#     'Price': [5, 6]
+# }
+# df = pd.DataFrame(data)
+# customer_demographics_analysis(df)
+# peak_sales_hours(df)
+# promotion_effectiveness(df)
+# seasonal_trends(df)
+# customer_loyalty(df)
+# product_popularity(df)
+# customer_preferences(df)
+# operational_efficiency(df)
+# supply_chain_analysis(df)
+# customer_satisfaction(df)
+# waste_reduction(df)
+# new_product_launches(df)
+# competitor_analysis(df)
+# menu_optimization(df)
+# digital_presence(df)
+# price_sensitivity(df)
